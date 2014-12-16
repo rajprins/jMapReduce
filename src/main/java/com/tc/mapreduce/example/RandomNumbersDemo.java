@@ -43,8 +43,7 @@ public class RandomNumbersDemo {
       Mapper<Integer> mapper;
 
       // ------------------------------------------------------------
-      // Finally, create x number of mappers (where x is defined by
-      // 'demoNumber')
+      // Finally, create x number of mappers (where x is defined by 'demoNumber')
       // ------------------------------------------------------------
       for (int i = 0; i < demoNumber; i++) {
          // new mapper

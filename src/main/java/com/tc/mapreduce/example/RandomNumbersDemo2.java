@@ -18,9 +18,6 @@ public class RandomNumbersDemo2 {
       System.out.println("[DEMO] Starting map reduce process for calculating " + demoNumber + " * " + demoNumber + " random numbers.");
       long startTime = System.currentTimeMillis();
 
-      // ------------------------------------------------------------
-      // Start with setting up a reducer
-      // ------------------------------------------------------------
       Reducer<Integer, Mapper<Integer>, Integer> reducer = new Reducer<Integer, Mapper<Integer>, Integer>() {
          static final long serialVersionUID = 1L;
 
@@ -33,16 +30,9 @@ public class RandomNumbersDemo2 {
          }
       };
 
-      // ------------------------------------------------------------
-      // Next, set up the mapreduce implementation of choice
-      // ------------------------------------------------------------
       mapReduce = new TPEMapReduceImpl<Integer, Integer>(reducer);
       Mapper<Integer> mapper;
 
-      // ------------------------------------------------------------
-      // Finally, create x number of mappers (where x is defined by
-      // 'demoNumber')
-      // ------------------------------------------------------------
       for (int i = 0; i < demoNumber; i++) {
          mapper = new Mapper<Integer>() {
             static final long serialVersionUID = 1L;
@@ -73,9 +63,6 @@ public class RandomNumbersDemo2 {
          mapReduce.addMapper(mapper);
       }
 
-      // ------------------------------------------------------------
-      // Show some statistics
-      // ------------------------------------------------------------
       long endTime = System.currentTimeMillis();
       System.out.println("[DEMO] Result: " + mapReduce.getResult());
       System.out.println("[DEMO] Elapsed time: " + (endTime - startTime) + " ms.");
